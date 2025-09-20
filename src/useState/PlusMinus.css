@@ -1,0 +1,36 @@
+.plus-minus {
+  height: auto;
+  width: 120px;
+  border: 2px solid grey;
+  box-shadow: 1px 2px 5px darkgrey;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  padding: 1rem 0.5rem;
+}
+
+.number {
+  font-size: 2rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+  width: 100%;
+  height: 1.5rem;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: white;
+}
+
+button.increment {
+  background-color: rgb(11, 37, 123);
+}
+
+button.decrement {
+  background-color: rgb(189, 30, 30);
+}

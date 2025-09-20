@@ -1,0 +1,73 @@
+/* Container for the overlay */
+.alert-container {
+  /* Positioning */
+  position: fixed; /* Positions the container relative to the viewport */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensures it's on top of other content */
+
+  /* Dimensions */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+
+  /* Flexbox for centering */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* UI: Semi-transparent background for the overlay effect */
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px); /* Adds a modern frosted glass effect */
+}
+
+/* The actual alert box/modal */
+.alert-box {
+  background-color: white; /* Changed to white for better contrast */
+  color: #333; /* Darker text for readability */
+
+  width: 350px; /* A bit wider for better text flow */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Drop shadow to make it pop */
+
+  padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem; /* Increased gap for better spacing */
+}
+
+.alert-box h5 {
+  color: #111; /* Darker heading color */
+  font-size: 1.25rem;
+  text-decoration: none; /* Removed underline for a cleaner look */
+  border-bottom: 2px solid #ef4444; /* Added a modern accent underline */
+  padding-bottom: 0.25rem;
+}
+
+.alert-box p {
+  color: #555; /* Softer grey for the body text */
+  line-height: 1.6; /* Improved line spacing for readability */
+}
+
+.alert-box button {
+  /* Styling */
+  background-color: #ef4444; /* A slightly softer red */
+  color: whitesmoke;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px; /* Rounded corners for the button */
+
+  /* Interactivity */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out; /* Smooth transition for hover */
+
+  /* Positioning */
+  align-self: flex-end; /* Pushes button to the right */
+}
+
+/* Hover effect for the button */
+.alert-box button:hover {
+  background-color: #dc2626; /* Darker red on hover */
+}
