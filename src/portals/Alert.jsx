@@ -24,4 +24,25 @@ function Alert({ isOpen, onClose }) {
   }
 }
 
+/*
+const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function fireAlert() {
+    setIsOpen(true);
+  }
+
+  function closeAlert() {
+    setIsOpen(false);
+  }
+
+  return (
+    <section>
+      <button onClick={fireAlert}>Dare you click here!</button>
+      <Alert isOpen={isOpen} onClose={closeAlert} />
+    </section>
+  );
+};
+*/
+
 export default Alert;
