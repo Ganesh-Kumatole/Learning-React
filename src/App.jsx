@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import FetchDataEffect from './challenges/FetchDataEffect';
+import UserProvider from './challege_useContext/UserContext';
 import './App.css';
 
 const App = () => {
   return (
     <div>
-      <FetchDataEffect />
+      <UserProvider />
     </div>
   );
 };
