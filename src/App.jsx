@@ -1,10 +1,13 @@
-import FocusInput from './Concepts/Hooks/useRef/FocusInput';
+import Above from './Concepts/Hooks/Custom_hooks/Above';
+import Below from './Concepts/Hooks/Custom_hooks/Below';
 import './App.css';
 
 const App = () => {
   return (
     <div>
-      <FocusInput />
+      <Above />
+      <hr />
+      <Below />
     </div>
   );
 };
