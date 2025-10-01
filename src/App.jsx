@@ -1,13 +1,10 @@
-import Above from './Concepts/Hooks/Custom_hooks/Above';
-import Below from './Concepts/Hooks/Custom_hooks/Below';
+import ToDo from './Mini_Projects/02_ToDo/ToDo';
 import './App.css';
 
 const App = () => {
   return (
     <div>
-      <Above />
-      <hr />
-      <Below />
+      <ToDo />
     </div>
   );
 };
