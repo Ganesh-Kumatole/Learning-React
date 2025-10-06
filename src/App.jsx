@@ -1,10 +1,11 @@
-import ToDo from './Mini_Projects/02_ToDo/ToDo';
+import Search from './Mini_Projects/03_Meals/Search';
+import Main from './Mini_Projects/03_Meals/Main';
 import './App.css';
 
 const App = () => {
   return (
     <div>
-      <ToDo />
+      <Main />
     </div>
   );
 };
