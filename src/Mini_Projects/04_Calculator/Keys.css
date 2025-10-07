@@ -1,0 +1,97 @@
+.calc-keys {
+  height: 75%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0.4rem;
+  padding: 0.4rem;
+
+  grid-template-areas:
+    'ac c divide mul'
+    'seven eight nine sub'
+    'four five six add'
+    'one two three equals'
+    'zero zero dot equals';
+}
+
+.calc-key {
+  color: white;
+  background: #222;
+  border: none;
+  font-size: 1.05rem;
+  padding: 0.6rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ac {
+  grid-area: ac;
+  background-color: #e74c3c;
+}
+
+.c {
+  grid-area: c;
+  background-color: #333;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.operand {
+  background-color: #444;
+}
+
+.one {
+  grid-area: one;
+}
+.two {
+  grid-area: two;
+}
+.three {
+  grid-area: three;
+}
+.four {
+  grid-area: four;
+}
+.five {
+  grid-area: five;
+}
+.six {
+  grid-area: six;
+}
+.seven {
+  grid-area: seven;
+}
+.eight {
+  grid-area: eight;
+}
+.nine {
+  grid-area: nine;
+}
+.zero {
+  grid-area: zero;
+}
+
+.dot {
+  grid-area: dot;
+}
+
+.add {
+  grid-area: add;
+}
+.sub {
+  grid-area: sub;
+}
+.mul {
+  grid-area: mul;
+}
+.divide {
+  grid-area: divide;
+}
+
+.equals {
+  background-color: #2ecc71;
+  grid-area: equals;
+}

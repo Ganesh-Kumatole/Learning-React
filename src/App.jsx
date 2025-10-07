@@ -1,11 +1,10 @@
-import Search from './Mini_Projects/03_Meals/Search';
-import Main from './Mini_Projects/03_Meals/Main';
+import Calculator from './Mini_Projects/04_Calculator/Calculator';
 import './App.css';
 
 const App = () => {
   return (
     <div>
-      <Main />
+      <Calculator />
     </div>
   );
 };
