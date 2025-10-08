@@ -16,11 +16,21 @@
   width: 340px;
   max-width: calc(100vw - 2rem);
   padding: 1rem;
-  background: linear-gradient(180deg, #0f1724 0%, #111318 100%);
+  /* darker glass look */
+  background: linear-gradient(
+    180deg,
+    rgba(10, 12, 16, 0.58),
+    rgba(8, 10, 14, 0.6)
+  );
   border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6),
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(6px) saturate(110%);
+  -webkit-backdrop-filter: blur(6px) saturate(110%);
+
+  /* gentle inner glow */
+  position: relative;
 }
 
 @media (max-width: 420px) {
@@ -29,4 +39,18 @@
     padding: 0.75rem;
     gap: 0.5rem;
   }
+}
+
+.calc-container::before {
+  /* soft glossy highlight */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0)
+  );
 }

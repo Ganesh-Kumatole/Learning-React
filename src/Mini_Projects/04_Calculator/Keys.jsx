@@ -19,6 +19,15 @@ const Keys = (props) => {
       : setCompute(compute.slice(0, compute.length - 1));
   };
 
+  const updateResult = () => {
+    try {
+      const result = eval(compute);
+      setCompute(result);
+    } catch (error) {
+      alert(`Invalid Expression!`);
+    }
+  };
+
   return (
     <div className="calc-keys">
       <button className="calc-key ac" onClick={allClear}>
@@ -66,7 +75,9 @@ const Keys = (props) => {
       <button className="calc-key three operand" onClick={updateExp}>
         3
       </button>
-      <button className="calc-key equals"> = </button>
+      <button className="calc-key equals" onClick={updateResult}>
+        =
+      </button>
       <button className="calc-key zero operand" onClick={updateExp}>
         0
       </button>
