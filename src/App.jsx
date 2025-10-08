@@ -1,10 +1,10 @@
-import Calculator from './Mini_Projects/04_Calculator/Calculator';
+import ToggleTheme from './Mini_Projects/05_ToggleTheme/ToggleTheme';
 import './App.css';
 
 const App = () => {
   return (
     <div>
-      <Calculator />
+      <ToggleTheme />
     </div>
   );
 };
