@@ -1,10 +1,10 @@
-import ToggleTheme from './Mini_Projects/05_ToggleTheme/ToggleTheme';
+import SearchBar from './Mini_Projects/06_HiddenSearchBar/SearchBar';
 import './App.css';
 
 const App = () => {
   return (
     <div>
-      <ToggleTheme />
+      <SearchBar />
     </div>
   );
 };
