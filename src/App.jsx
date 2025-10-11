@@ -1,10 +1,10 @@
-import Testimonial from './Mini_Projects/06_Testimonials/Testimonial';
+import FAQs from './Mini_Projects/07_FAQs/FAQs';
 import './App.css';
 
 const App = () => {
   return (
     <div className="app-container">
-      <Testimonial />
+      <FAQs />
     </div>
   );
 };
