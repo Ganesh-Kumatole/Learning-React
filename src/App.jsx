@@ -1,10 +1,10 @@
-import SearchBar from './Mini_Projects/06_HiddenSearchBar/SearchBar';
+import Testimonial from './Mini_Projects/06_Testimonials/Testimonial';
 import './App.css';
 
 const App = () => {
   return (
-    <div>
-      <SearchBar />
+    <div className="app-container">
+      <Testimonial />
     </div>
   );
 };
