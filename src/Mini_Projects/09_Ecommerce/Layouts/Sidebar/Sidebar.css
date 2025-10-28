@@ -1,0 +1,62 @@
+.sidebar-container {
+  width: 20%;
+  height: 100%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #f5f5f5;
+  border-right: 1px solid #ddd;
+}
+
+.filter-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.filter-type {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.radioBtn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.radioBtn-wrapper label {
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.radioBtn-wrapper:hover label {
+  color: #007bff;
+}
+
+#price {
+  width: 100%;
+}
+
+.reset-filter {
+  padding: 0.5rem 1rem;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.reset-filter:hover {
+  background-color: #007bff;
+  color: #fff;
+}
