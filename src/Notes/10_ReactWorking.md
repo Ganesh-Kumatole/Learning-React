@@ -9,47 +9,44 @@ React's strategy is to avoid touching the slow, real DOM as much as possible. It
 
 ---
 
-### 2. The Three-Step Process
+### 2. The Reconciliation Process (Powered by React Fiber)
 
-When you update the state of a component (e.g., by calling `setCount(1)`), React kicks off a three-step process.
+When you update the state of a component (e.g., by calling `setCount(1)`), React kicks off its reconciliation process. Since React 16, this process is run by the **React Fiber** engine, which is designed to be **asynchronous, interruptible, and prioritized.**
 
-#### Step 1: The Render Phase
+This means React can start "thinking" about a change, pause that work to handle a more urgent update (like user input), and then resume its work. This process is split into two main phases:
 
-When your state or props change, React calls your component functions and creates a **new** Virtual DOM tree that represents the updated UI. At this point, nothing has changed on the screen yet. React now has two VDOMs in memory:
+#### Phase 1: The Render / Reconciliation Phase (Interruptible ⏸️)
 
-1.  The "old" VDOM from before the update.
-2.  The "new" VDOM that was just created.
+This is where all the "thinking" happens. React figures out _what_ needs to be done. This entire phase happens in memory and **can be paused or aborted** if a higher-priority task comes in.
 
-#### Step 2: The Reconciliation Phase (The "Diffing" Algorithm)
+This phase includes:
 
-This is the heart of React's performance. Instead of throwing away the old UI and building a new one, React compares the new VDOM with the old one to find the **absolute minimum number of changes** required. This comparison process is called **reconciliation**, and the algorithm it uses is often called "diffing."
+1.  **Creating the "New" VDOM:** React calls your component functions and creates a new Virtual DOM tree representing the updated UI.
+2.  **Running the "Diffing" Algorithm:** React compares the new VDOM with the old one to find the absolute minimum number of changes required.
 
-React uses a set of clever heuristics (rules of thumb) to make this comparison incredibly fast:
+**The "Diffing" Algorithm Heuristics:**
 
 - **Rule 1: Different Element Types = Rebuild**
-  If an element's type changes (e.g., a `<p>` becomes a `<div>`), React doesn't try to compare them. It assumes you want something completely different, so it destroys the old element and all its children and builds a new one from scratch.
+  If an element's type changes (e.g., a `<p>` becomes a `<div>`), React doesn't try to compare them. It destroys the old element and all its children and builds a new one from scratch.
 
 - **Rule 2: Same Element Type = Update Attributes**
-  If the element type is the same (e.g., a `<div>` is still a `<div>`), React keeps the same underlying DOM node and only checks for changes in its attributes (`className`, `style`, `onClick`, etc.). It updates only the attributes that have changed.
+  If the element type is the same (e.g., a `<div>` is still a `<div>`), React keeps the same underlying DOM node and only checks for attributes (`className`, `style`, `onClick`, etc.), updating only what has changed.
 
 - **Rule 3: List Diffing with the `key` Prop**
-  This is where the `key` prop becomes critical. When rendering a list of items, React needs to know if an item was added, removed, or reordered.
-  - **Without `key`s:** React does a simple top-to-bottom comparison. If you add an item at the beginning of a list, React will think _every single item_ in the list has changed, leading to poor performance.
-  - **With `key`s:** The `key` prop gives each item a stable, unique identity. React can use these keys to instantly identify which items have moved, been added, or been removed, making the update process far more efficient. This is why you always get a warning if you forget to add `key`s to a list.
+  This is where the `key` prop becomes critical. React uses the stable, unique `key` to identify which items have moved, been added, or been removed, making list updates incredibly efficient. Without keys, React has to guess and may re-render the entire list unnecessarily.
 
-#### Step 3: The Commit Phase
+#### Phase 2: The Commit Phase (Uninterruptible ⚡)
 
-After the reconciliation phase, React has a small, efficient list of the exact changes that need to be made to the real DOM (e.g., "change the `className` on this element," "add this new `<li>`," "remove that element").
+Once the Render phase is complete, React has a final list of all the changes. It then enters the Commit phase, which is **synchronous and cannot be interrupted.**
 
-In the commit phase, React takes this list and applies all these changes to the real DOM in a single, optimized batch. This is the only time React interacts with the slow browser DOM.
+This is crucial for UI consistency—you wouldn't want the user to see a half-finished update.
+
+In this phase, React takes its list of changes and applies all of them to the real DOM in a single, optimized batch. This is the only time React interacts with the slow browser DOM.
 
 ---
 
 ### Summary of the Flow
 
 1.  **Trigger:** You call `setState` or props change.
-2.  **Render:** React creates a new Virtual DOM tree.
-3.  **Reconciliation:** React "diffs" the new VDOM tree against the old one to find the differences.
-4.  **Commit:** React updates the real DOM with only the changes that were found.
-
-This entire process ensures that your application is fast and responsive, as the expensive DOM manipulation is kept to an absolute minimum.
+2.  **Phase 1: Render & Reconciliation (Asynchronous):** React Fiber begins building a new VDOM and "diffs" it against the old one to find changes. _This work can be paused if a higher-priority update (like typing) occurs._
+3.  **Phase 2: Commit (Synchronous):** React takes the final list of changes and updates the real DOM in one single, uninterrupted batch.

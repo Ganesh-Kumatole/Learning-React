@@ -4,7 +4,12 @@ import './Counter.css';
 function Counter() {
   const [count, setCount] = useState(0);
 
-  const incrementCounter = () => setCount(count + 1);
+  const incrementCounter = () => {
+    setCount(count + 1);
+    console.log(count);
+    setCount(count + 2);
+    console.log(count);
+  };
   const decrementCounter = () => setCount(count - 1);
 
   return (
